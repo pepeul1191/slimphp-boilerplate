@@ -8,7 +8,6 @@ use Controller\ErrorController;
 use Controller\HomeController;
 use Controller\LoginController;
 use Controller\ProvinciaController;
-use Admin\Controller\ViewController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -37,3 +36,5 @@ $app->get('/distrito/buscar', DistritoController::class . ':buscar')->add($mw_am
 $app->get('/distrito/nombre/{distrito_id}', DistritoController::class . ':nombre')->add($mw_ambiente_csrf);
 // access
 $app->get('/access/', \Access\Controller\ViewController::class . ':index');
+$app->get('/access/system/list', \Access\Controller\SystemController::class . ':list');
+$app->post('/access/system/save', \Access\Controller\SystemController::class . ':save');
