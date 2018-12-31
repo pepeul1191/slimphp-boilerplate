@@ -42,3 +42,6 @@ $app->post('/access/system/save', \Access\Controller\SystemController::class . '
 // permission
 $app->get('/access/permission/list/{system_id}', \Access\Controller\PermissionController::class . ':list');
 $app->post('/access/permission/save', \Access\Controller\PermissionController::class . ':save');
+
+// competition
+$app->get('/competition/', \Competition\Controller\HomeController::class . ':index');
