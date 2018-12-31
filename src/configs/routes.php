@@ -36,5 +36,9 @@ $app->get('/distrito/buscar', DistritoController::class . ':buscar')->add($mw_am
 $app->get('/distrito/nombre/{distrito_id}', DistritoController::class . ':nombre')->add($mw_ambiente_csrf);
 // access
 $app->get('/access/', \Access\Controller\ViewController::class . ':index');
+// system
 $app->get('/access/system/list', \Access\Controller\SystemController::class . ':list');
 $app->post('/access/system/save', \Access\Controller\SystemController::class . ':save');
+// permission
+$app->get('/access/permission/list/{system_id}', \Access\Controller\PermissionController::class . ':list');
+$app->post('/access/permission/save', \Access\Controller\PermissionController::class . ':save');
