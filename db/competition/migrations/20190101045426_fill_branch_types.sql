@@ -5,3 +5,5 @@ INSERT INTO branch_types (id, name) VALUES
   (2, 'Provincia');
 
 -- migrate:down
+
+TRUNCATE branch_types;
