@@ -14,6 +14,12 @@ Basado en Slim Framework 3 Skeleton Application
 
 Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambiente_session' a 'inactivo' .
 
+Migraciones con DBMATE - competition:
+
+    $ dbmate -d "db/competition/migrations" -e "COMPETITION" new <<nombre_de_migracion>>
+    $ dbmate -d "db/competition/migrations" -e "COMPETITION" up
+    $ dbmate -d "db/competition/migrations" -e "COMPETITION" rollback
+
 ---
 
 Fuentes:
