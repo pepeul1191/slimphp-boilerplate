@@ -45,3 +45,6 @@ $app->post('/access/permission/save', \Access\Controller\PermissionController::c
 
 // competition
 $app->get('/competition/', \Competition\Controller\HomeController::class . ':index');
+$app->get('/competition/login', \Competition\Controller\LoginController::class . ':index');
+$app->post('/competition/login', \Competition\Controller\LoginController::class . ':access');
+$app->get('/competition/admin/', \Competition\Controller\AdminController::class . ':index')->add($mw_session_true);

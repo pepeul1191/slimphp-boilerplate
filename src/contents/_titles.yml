@@ -9,3 +9,4 @@ sp:
   key_activation: 'Cuenta Activada'
   providers_index: 'Gestión de Canchas'
   competition_home: 'Concurso de Fotografía'
+  competition_admin: 'Administración de Concurso'
