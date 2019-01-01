@@ -1,0 +1,29 @@
+body {
+  background: url(../img/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 50px;
+}
+
+.img-title{
+  margin-bottom: 30px;
+}
+
+.link{
+  color: var(--primary-color);
+  font-size: 25px;
+  margin-left: 30px;
+  font-weight: 700;
+}
+
+.link:hover{
+  text-decoration: none;
+  font-weight: 1000;
+  color: var(--primary-color);
+}
+
+.links{
+  margin-top: 30px;
+}

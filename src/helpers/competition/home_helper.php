@@ -11,6 +11,7 @@ if ( ! function_exists('index_css'))
           'bower_components/font-awesome/css/font-awesome.min',
           'competition/assets/css/constants',
           'competition/assets/css/styles',
+          'competition/assets/css/competition',
         ];
         break;
       case 'produccion':
@@ -30,6 +31,10 @@ if ( ! function_exists('index_js'))
     switch($constants['env_static']){
       case 'desarrollo':
         $rpta = [
+          'bower_components/jquery/dist/jquery.min',
+          'bower_components/bootstrap/dist/js/bootstrap.min',
+          'bower_components/underscore/underscore-min',
+          'bower_components/backbone/backbone-min',
         ];
         break;
       case 'produccion':
