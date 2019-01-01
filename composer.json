@@ -41,6 +41,7 @@
         "process-timeout" : 0
     },
     "scripts": {
+        "dump": "composer dump-autoload -o",
         "start": "php -S localhost:8080",
         "test": "phpunit"
     }

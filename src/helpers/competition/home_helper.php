@@ -35,6 +35,7 @@ if ( ! function_exists('index_js'))
           'bower_components/bootstrap/dist/js/bootstrap.min',
           'bower_components/underscore/underscore-min',
           'bower_components/backbone/backbone-min',
+          'competition/routes/competition',
         ];
         break;
       case 'produccion':
