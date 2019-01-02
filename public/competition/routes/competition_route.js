@@ -1,24 +1,28 @@
 var competitionRouter = Backbone.Router.extend({
   signInView: null,
+  homeView: null,
+  uploadView: null,
   initialize: function() {
 
   },
   routes: {
-    "": "default",
+    "": "index",
     "info": "info",
     "sign_in": "signIn",
     "upload": "upload",
     "*actions" : "default",
   },
   index: function(){
-    //window.location.href = BASE_URL + "accesos/#/modulo";
+    if(this.homeView == null){
+      this.homeView = new HomeView();
+    }
+    this.homeView.render();
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";
   },
   info: function(){
     var url = STATIC_URL + 'competition/docs/BASES_FOTO_COA.pdf';
-    console.log(url);
     var req = new XMLHttpRequest();
     req.open("GET", url, true);
     req.responseType = "blob";
@@ -33,10 +37,16 @@ var competitionRouter = Backbone.Router.extend({
     window.location.href = BASE_URL + "competition/#/";
   },
   signIn: function(){
-
+    if(this.signInView == null){
+      this.signInView = new SignInView();
+    }
+    this.signInView.render();
   },
   upload: function(){
-    
+    if(this.uploadView == null){
+      this.uploadView = new UploadView();
+    }
+    this.uploadView.render();
   },
 });
 
