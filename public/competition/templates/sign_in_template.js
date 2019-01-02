@@ -21,9 +21,13 @@ var signInTemplate = _.template(`
           <label for="txtDni">Sede</label>
           <select class="custom-select" id="slcBranch" disabled>
             <option selected>Seleccione una sede...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <% branches.each(function(model){ %>
+              <% //if (model.get('id') == branch_id) { %>
+              <option value="<%= model.get('id') %>" selected><%= model.get('name') %></option>
+              <% //} else { %>
+                <option value="<%= model.get('id') %>"><%= model.get('name') %></option>
+              <% //} %>
+            <% }) %>
           </select>
           <small id="txtBranchHelp" class="form-text text-muted"></small>
         </div>

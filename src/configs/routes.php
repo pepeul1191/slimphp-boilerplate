@@ -48,3 +48,4 @@ $app->get('/competition/', \Competition\Controller\HomeController::class . ':ind
 $app->get('/competition/login', \Competition\Controller\LoginController::class . ':index');
 $app->post('/competition/login', \Competition\Controller\LoginController::class . ':access');
 $app->get('/competition/admin/', \Competition\Controller\AdminController::class . ':index')->add($mw_session_true);
+$app->get('/competition/branch/list', \Competition\Controller\BranchController::class . ':listVW');

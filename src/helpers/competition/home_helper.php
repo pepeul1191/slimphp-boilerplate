@@ -35,6 +35,8 @@ if ( ! function_exists('index_js'))
           'bower_components/bootstrap/dist/js/bootstrap.min',
           'bower_components/underscore/underscore-min',
           'bower_components/backbone/backbone-min',
+          'competition/models/branch',
+          'competition/collections/branch_collection',
           'competition/templates/home_template',
           'competition/templates/sign_in_template',
           'competition/templates/upload_template',
