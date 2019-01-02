@@ -16,14 +16,15 @@ var uploadTemplate = _.template(`
           <small id="txtDescriptionHelp" class="form-text text-muted"></small>
         </div>
       </div>
+      <input type="file" id="fileInput" name="file" accept="image/png, image/jpeg" class="d-none">
       <div class="col-md-6">
-        <button type="button" class="btn btn-link btn-large">
+        <button type="button" class="btn btn-link btn-large" id="fileSelect">
           <i class="fa fa-search" aria-hidden="true"></i>
           Seleccionar Archivo
         </button>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-link btn-large">
+        <button type="button" class="btn btn-link btn-large" id="fileUpload">
           <i class="fa fa-cloud-upload" aria-hidden="true"></i>
           Subir Archivo
         </button>

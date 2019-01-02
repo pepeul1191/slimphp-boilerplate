@@ -6,15 +6,16 @@ var SignInView = Backbone.View.extend({
     this.branches.fillModels();
   },
   events: {
-    "click .close": "modalClose",
+    "focusout #txtDni":"searchEmployee",
   },
   //eventos table de permisos
   render: function(event){
-    var _this = this;
-    console.log(_this.branches.get(1));
     $(this.el).html(signInTemplate({
-      branches: _this.branches,
+      branches: this.branches,
       branch_id: 123213,
     }));
+  },
+  searchEmployee: function(event){
+    console.log(event.target.value);
   },
 });
