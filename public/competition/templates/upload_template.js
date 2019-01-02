@@ -3,6 +3,9 @@ var uploadTemplate = _.template(`
     <h1 class="text-uppercase text-md-center font-weight-bold color-primary">Ficha de Inscripción</h1>
     <div class="row">
       <div class="col-md-12">
+        <label id="message"></label>
+      </div>
+      <div class="col-md-12">
         <div class="form-group">
           <label for="txtTitle">Título de la Obra</label>
           <input type="text" class="form-control" id="txtTitle" aria-describedby="emailHelp" placeholder="Ingrese el titulo de la obra" disabled>

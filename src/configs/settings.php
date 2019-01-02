@@ -14,6 +14,7 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
+      'path' => getcwd(),
       'base_url' => 'http://localhost:8080/',
       'static_url' => 'http://localhost:8080/public/',
       'env_static' => 'desarrollo',
