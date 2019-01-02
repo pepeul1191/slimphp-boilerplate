@@ -9,14 +9,14 @@ var signInTemplate = _.template(`
         <div class="form-group">
           <label for="txtDni">DNI</label>
           <input type="text" class="form-control" id="txtDni" aria-describedby="txtDniHelp" placeholder="Ingrese su DNI">
-          <small id="txtDniHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtDniHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtName">Nombre Completo</label>
           <input type="text" class="form-control" id="txtName" aria-describedby="txtNameHelp" placeholder="" disabled>
-          <small id="txtNameHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtNameHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
@@ -32,28 +32,28 @@ var signInTemplate = _.template(`
               <% //} %>
             <% }) %>
           </select>
-          <small id="txtBranchHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtBranchHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtAddress">Dirección</label>
           <textarea class="form-control" rows="2" id="txtAddress" placeholder="Ingrese su dirección" disabled></textarea>
-          <small id="txtAddressHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtAddressHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtPhone">Teléfono</label>
           <input type="text" class="form-control" id="txtPhone" aria-describedby="txtPhoneHelp" placeholder="Ingrese su teléfono" disabled>
-          <small id="txtPhoneHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtPhoneHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtEmail">Email</label>
           <input type="email" class="form-control" id="txtEmail" aria-describedby="txtEmailHelp" placeholder="Ingrese su correo" disabled>
-          <small id="txtEmailHelp" class="form-text text-danger text-muted"></small>
+          <small id="txtEmailHelp" class="form-text text-danger"></small>
         </div>
       </div>
     </div>

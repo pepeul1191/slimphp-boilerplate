@@ -51,3 +51,4 @@ $app->get('/competition/admin/', \Competition\Controller\AdminController::class 
 $app->get('/competition/branch/list', \Competition\Controller\BranchController::class . ':listVW');
 $app->post('/competition/employee/photo_upload', \Competition\Controller\EmployeeController::class . ':photoUpload');
 $app->get('/competition/employee/dni', \Competition\Controller\EmployeeController::class . ':dni');
+$app->post('/competition/employee/participate', \Competition\Controller\EmployeeController::class . ':participate');

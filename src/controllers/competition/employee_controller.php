@@ -67,4 +67,62 @@ class EmployeeController extends \Configs\Controller
     }
     return $response->withStatus($status)->write($rpta);
   }
+
+  public function participate($request, $response, $args) {
+    $rpta = '';
+    $status = 200;
+    try {
+      $participation = json_decode($request->getParam('data'));
+      // update employee
+      $employee = \Model::factory('\Models\Competition\Employee', 'competition')
+        ->where('id', $participation->{'employee'}->{'id'})
+        ->find_one();
+      $employee->dni = $participation->{'employee'}->{'dni'};
+      $employee->address = $participation->{'employee'}->{'address'};
+      $employee->phone = $participation->{'employee'}->{'phone'};
+      $employee->email = $participation->{'employee'}->{'email'};
+      $employee->branch_id = $participation->{'employee'}->{'branch_id'};
+      $employee->save();
+      // update photo
+      $photo = \Model::factory('\Models\Competition\Photo', 'competition')
+        ->where('employee_id', $participation->{'employee'}->{'id'})
+        ->find_one();
+      if($photo == false){
+        # create photo
+        $new_photo = \Model::factory('\Models\Competition\Photo', 'competition')
+          ->create();
+        $new_photo->title = $participation->{'upload'}->{'title'};
+        $new_photo->description = $participation->{'upload'}->{'description'};
+        $new_photo->employee_id = $participation->{'employee'}->{'id'};
+        $new_photo->file_name = $participation->{'upload'}->{'file_name'};
+        $new_photo->save();
+      }else{
+        # update photo
+        $photo->title = $participation->{'upload'}->{'title'};
+        $photo->description = $participation->{'upload'}->{'description'};
+        $photo->file_name = $participation->{'upload'}->{'file_name'};
+        $photo->save();
+      }
+      $rpta = json_encode(
+        [
+          'tipo_mensaje' => 'success',
+          'mensaje' => [
+            'Se ha registrado su participación',
+          ]
+        ]
+      );
+    }catch (\Exception $e) {
+      $status = 500;
+      $rpta = json_encode(
+        [
+          'tipo_mensaje' => 'error',
+          'mensaje' => [
+            'Se produjo un error en subir el archivo',
+            $e->getMessage()
+          ]
+        ]
+      );
+    }
+    return $response->withStatus($status)->write($rpta);
+  }
 }

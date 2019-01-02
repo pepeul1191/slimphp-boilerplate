@@ -34,9 +34,13 @@ button > i{
 }
 
 .text-danger {
-  color: #dc3545!important;
+  color: #dc3545 !important;
 }
 
 .input-error {
-  border-color: #dc3545!important;
+  border-color: #dc3545 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
 }

@@ -119,12 +119,12 @@ var SignInView = Backbone.View.extend({
       $("#slcBranch").removeClass("input-error");
     }
     if(_continue == true){
-      this.model.set("name", $("#slcBranch").val());
-      this.model.set("dni", $("#txtName").val());
-      this.model.set("address", $("#txtName").val());
-      this.model.set("phone", $("#txtAddress").val());
-      this.model.set("email", $("#txtPhone").val());
-      this.model.set("branch_id", $("#txtEmail").val());
+      this.model.set("name", $("#txtName").val());
+      this.model.set("dni", $("#txtDni").val());
+      this.model.set("address", $("#txtAddress").val());
+      this.model.set("phone", $("#txtPhone").val());
+      this.model.set("email", $("#txtEmail").val());
+      this.model.set("branch_id", $("#slcBranch").val());
     }else{
       return false;
     }

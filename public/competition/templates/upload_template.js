@@ -9,31 +9,34 @@ var uploadTemplate = _.template(`
         <div class="form-group">
           <label for="txtTitle">Título de la Obra</label>
           <input type="text" class="form-control" id="txtTitle" aria-describedby="emailHelp" placeholder="Ingrese el titulo de la obra" disabled>
-          <small id="txtTitleHelp" class="form-text text-muted"></small>
+          <small id="txtTitleHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtDescription">Breve Descripción de la Obra</label>
           <textarea class="form-control" rows="5" id="txtDescription" placeholder="Descripción de la foto a subir" disabled></textarea>
-          <small id="txtDescriptionHelp" class="form-text text-muted"></small>
+          <small id="txtDescriptionHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <input type="file" id="fileInput" name="file" accept="image/png, image/jpeg" class="d-none">
       <div class="col-md-6">
-        <button type="button" class="btn btn-link btn-large" id="fileSelect">
+        <button type="button" class="btn btn-link btn-large" id="fileSelect" disabled>
           <i class="fa fa-search" aria-hidden="true"></i>
           Seleccionar Archivo
         </button>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-link btn-large" id="fileUpload">
+        <button type="button" class="btn btn-link btn-large" id="fileUpload" disabled>
           <i class="fa fa-cloud-upload" aria-hidden="true"></i>
           Subir Archivo
         </button>
       </div>
       <div class="col-md-12">
-        <button type="button" class="btn btn-large btn-primary">
+        <small id="txtUploadHelp" class="form-text text-danger text-danger"></small>
+      </div>
+      <div class="col-md-12">
+        <button type="button" class="btn btn-large btn-primary" id="submitSignIn" disabled>
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
           Enviar Inscripción
         </button>
