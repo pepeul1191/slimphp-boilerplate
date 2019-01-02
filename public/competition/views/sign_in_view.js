@@ -4,6 +4,7 @@ var SignInView = Backbone.View.extend({
   initialize: function(){
     this.branches = new BranchCollection();
     this.branches.fillModels();
+    this.model = new Employee();
   },
   events: {
     "focusout #txtDni":"searchEmployee",

@@ -5,7 +5,7 @@ var UploadView = Backbone.View.extend({
   messageLabel: "#message",
   fileMaxSize: 3545850, //bytes
   initialize: function(){
-
+    this.model = new Photo();
   },
   events: {
     "click #fileSelect": "fileSelect",
@@ -38,12 +38,12 @@ var UploadView = Backbone.View.extend({
 	      contentType: false,
 	      processData: false,
 	      beforeSend: function() {
-	        $(_this.fileUpload).attr("disabled", "true");
-					$(_this.messageLabel).html("Subiendo");
+	        // $(_this.fileUpload).attr("disabled", "true");
+					// $(_this.messageLabel).html("Subiendo");
 				},
 	      success: function(data) {
-	        var data = JSON.parse(data);
-          console.log(data);
+          _this.model.set("file_name", data);
+          console.log(_this.model);
 	      },
         error: function(xhr, status, error){
           console.error(error);

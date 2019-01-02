@@ -37,6 +37,7 @@ if ( ! function_exists('index_js'))
           'bower_components/backbone/backbone-min',
           'competition/models/branch',
           'competition/models/photo',
+          'competition/models/employee',
           'competition/collections/branch_collection',
           'competition/templates/home_template',
           'competition/templates/sign_in_template',
