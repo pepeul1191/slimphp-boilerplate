@@ -32,3 +32,11 @@ button > i{
   text-decoration: none;
   font-size: 1.05rem;
 }
+
+.text-danger {
+  color: #dc3545!important;
+}
+
+.input-error {
+  border-color: #dc3545!important;
+}

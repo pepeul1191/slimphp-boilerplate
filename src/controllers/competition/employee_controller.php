@@ -31,4 +31,40 @@ class EmployeeController extends \Configs\Controller
     }
     return $response->withStatus($status)->write($rpta);
   }
+
+  public function dni($request, $response, $args) {
+    $rpta = '';
+    $status = 200;
+    $dni = $request->getQueryParam('dni');
+    try {
+      $rs = \Model::factory('\Models\Competition\Employee', 'competition')
+        ->where('dni', $dni)
+        ->find_one();
+      if($rs == false){
+        throw new \Exception('No existe empleado registrado con dicho DNI');
+      }else{
+        $temp = [];
+        $temp["id"] = $rs->id;
+        $temp["name"] = utf8_encode($rs->name);
+        $temp["dni"] = $rs->dni;
+        $temp["address"] = $rs->address;
+        $temp["phone"] = $rs->phone;
+        $temp["email"] = $rs->email;
+        $temp["branch_id"] = $rs->branch_id;
+        $rpta = json_encode($temp);
+      }
+    }catch (\Exception $e) {
+      $status = 500;
+      $rpta = json_encode(
+        [
+          'tipo_mensaje' => 'error',
+          'mensaje' => [
+            'No se ha podido buscar al empleado. ',
+            $e->getMessage()
+          ]
+        ]
+      );
+    }
+    return $response->withStatus($status)->write($rpta);
+  }
 }
