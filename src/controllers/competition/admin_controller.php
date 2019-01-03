@@ -10,7 +10,7 @@ class AdminController extends \Configs\Controller
     $status = 200;
     $language = 'sp';
     # helpers
-    $this->load_helper('access/view');
+    $this->load_helper('competition/admin');
     $csss = $this->load_css(index_css($this->constants));
     $jss = $this->load_js(index_js($this->constants));
     $modules = $this->menu_modules($language, 'competition', 'compeition/admin/');

@@ -49,6 +49,8 @@ $app->get('/competition/login', \Competition\Controller\LoginController::class .
 $app->post('/competition/login', \Competition\Controller\LoginController::class . ':access');
 $app->get('/competition/admin/', \Competition\Controller\AdminController::class . ':index')->add($mw_session_true);
 $app->get('/competition/branch/list', \Competition\Controller\BranchController::class . ':listVW');
+$app->get('/competition/branch_type/list', \Competition\Controller\BranchTypeController::class . ':list');
+$app->post('/competition/branch/save', \Competition\Controller\BranchController::class . ':save');
 $app->post('/competition/employee/photo_upload', \Competition\Controller\EmployeeController::class . ':photoUpload');
 $app->get('/competition/employee/dni', \Competition\Controller\EmployeeController::class . ':dni');
 $app->post('/competition/employee/participate', \Competition\Controller\EmployeeController::class . ':participate');
