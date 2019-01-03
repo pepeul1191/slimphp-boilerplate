@@ -10,9 +10,11 @@ class AdminController extends \Configs\Controller
     $status = 200;
     $language = 'sp';
     # helpers
-    $this->load_helper('competition/admin');
+    $this->load_helper('access/view');
     $csss = $this->load_css(index_css($this->constants));
     $jss = $this->load_js(index_js($this->constants));
+    $modules = $this->menu_modules($language, 'competition', 'compeition/admin/');
+    $items = $this->menu_items($language, 'competition', 'compeition/admin/');
     # view
     $locals = [
       'constants' => $this->constants,
@@ -29,6 +31,6 @@ class AdminController extends \Configs\Controller
       )),
     ];
     $view = $this->container->view;
-    return $view($response, 'blank', 'competition/admin.phtml', $locals);
+    return $view($response, 'app', 'access/index.phtml', $locals);
   }
 }

@@ -36,6 +36,23 @@ sp:
               url: managment/#/client
             - name: Agregar Cliente
               url: managment/#/client/add
+  competition:
+    - name: Concurso de Fotos
+      url: compeition/admin/
+      icon: ''
+      subtitles:
+        - name: Maestros
+          items:
+            - name: Gestión de Sedes
+              url: competition/admin/#/branch
+            - name: Gestión de Empleados
+              url: competition/admin/#/employee
+        - name: Participantes
+          items:
+            - name: Lista de Participantes
+              url: competition/admin/#/participant
+            - name: Descargar Participantes
+              url: competition/admin/#/download
   providers:
     left:
       - name: Locales
