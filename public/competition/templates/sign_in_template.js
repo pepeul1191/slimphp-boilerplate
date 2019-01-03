@@ -8,14 +8,14 @@ var signInTemplate = _.template(`
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtDni">DNI</label>
-          <input type="text" class="form-control" id="txtDni" aria-describedby="txtDniHelp" placeholder="Ingrese su DNI">
+          <input type="text" class="form-control" id="txtDni" aria-describedby="txtDniHelp" placeholder="Ingrese su DNI" value="<%= employee.get('dni') %>">
           <small id="txtDniHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtName">Nombre Completo</label>
-          <input type="text" class="form-control" id="txtName" aria-describedby="txtNameHelp" placeholder="" disabled>
+          <input type="text" class="form-control" id="txtName" aria-describedby="txtNameHelp" placeholder="" disabled value="<%= employee.get('name') %>">
           <small id="txtNameHelp" class="form-text text-danger"></small>
         </div>
       </div>
@@ -25,8 +25,8 @@ var signInTemplate = _.template(`
           <select class="custom-select" id="slcBranch" disabled>
             <option value="E" selected>Seleccione una sede...</option>
             <% branches.each(function(model){ %>
-              <% if (model.get('id') == branch_id) { %>
-              <option value="<%= model.get('id') %>"><%= model.get('name') %></option>
+              <% if (model.get('id') == branch_id || parseInt(employee.get('branch_id')) == parseInt(model.get('id'))) { %>
+              <option value="<%= model.get('id') %>" selected><%= model.get('name') %></option>
               <% } else { %>
                 <option value="<%= model.get('id') %>"><%= model.get('name') %></option>
               <% } %>
@@ -38,21 +38,21 @@ var signInTemplate = _.template(`
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtAddress">Dirección</label>
-          <textarea class="form-control" rows="2" id="txtAddress" placeholder="Ingrese su dirección" disabled></textarea>
+          <textarea class="form-control" rows="2" id="txtAddress" placeholder="Ingrese su dirección" disabled><%= employee.get('address') %></textarea>
           <small id="txtAddressHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtPhone">Teléfono</label>
-          <input type="text" class="form-control" id="txtPhone" aria-describedby="txtPhoneHelp" placeholder="Ingrese su teléfono" disabled>
+          <input type="text" class="form-control" id="txtPhone" aria-describedby="txtPhoneHelp" placeholder="Ingrese su teléfono" disabled value="<%= employee.get('phone') %>">
           <small id="txtPhoneHelp" class="form-text text-danger"></small>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="txtEmail">Email</label>
-          <input type="email" class="form-control" id="txtEmail" aria-describedby="txtEmailHelp" placeholder="Ingrese su correo" disabled>
+          <input type="email" class="form-control" id="txtEmail" aria-describedby="txtEmailHelp" placeholder="Ingrese su correo" disabled value="<%= employee.get('email') %>">
           <small id="txtEmailHelp" class="form-text text-danger"></small>
         </div>
       </div>

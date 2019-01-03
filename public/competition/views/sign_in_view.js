@@ -13,10 +13,20 @@ var SignInView = Backbone.View.extend({
   },
   //eventos table de permisos
   render: function(event){
+    var employee = this.model;
     $(this.el).html(signInTemplate({
       branches: this.branches,
       branch_id: 123213,
+      employee: employee,
     }));
+    if(employee.get("id") != "E"){
+      $("#txtDni").prop("disabled", false);
+      $("#slcBranch").prop("disabled", false);
+      $("#txtAddress").prop("disabled", false);
+      $("#txtPhone").prop("disabled", false);
+      $("#txtEmail").prop("disabled", false);
+      $("#slcBranch").focus();
+    }
   },
   searchEmployee: function(event){
     var dni = event.target.value;
