@@ -4,6 +4,28 @@ namespace Competition\Controller;
 
 class EmployeeController extends \Configs\Controller
 {
+  public function listWithBranch($request, $response, $args) {
+    $rpta = '';
+    $status = 200;
+    try {
+      $rs = \Model::factory('\Models\Competition\VWEmployeeBranch', 'competition')
+        ->find_array();
+      $rpta = json_encode($rs);
+    }catch (\Exception $e) {
+      $status = 500;
+      $rpta = json_encode(
+        [
+          'tipo_mensaje' => 'error',
+          'mensaje' => [
+            'No se ha podido los empleados',
+            $e->getMessage()
+          ]
+        ]
+      );
+    }
+    return $response->withStatus($status)->write($rpta);
+  }
+
   public function photoUpload($request, $response, $args) {
     $rpta = '';
     $status = 200;
@@ -124,5 +146,66 @@ class EmployeeController extends \Configs\Controller
       );
     }
     return $response->withStatus($status)->write($rpta);
+  }
+
+  public function save($request, $response, $args) {
+    $data = json_decode($request->getParam('data'));
+    $nuevos = $data->{'nuevos'};
+    $editados = $data->{'editados'};
+    $eliminados = $data->{'eliminados'};
+    $rpta = []; $array_nuevos = [];
+    $status = 200;
+    \ORM::get_db('competition')->beginTransaction();
+    try {
+      if(count($nuevos) > 0){
+        foreach ($nuevos as &$nuevo) {
+          $employee = \Model::factory('\Models\Competition\Employee', 'competition')->create();
+          $employee->name = $nuevo->{'name'};
+          $employee->dni = $nuevo->{'dni'};
+          $employee->address = $nuevo->{'address'};
+          $employee->phone = $nuevo->{'phone'};
+          $employee->email = $nuevo->{'email'};
+          $employee->branch_id = $nuevo->{'branch_id'};
+          $employee->save();
+          $temp = [];
+          $temp['temporal'] = $nuevo->{'id'};
+          $temp['nuevo_id'] = $employee->id;
+          array_push( $array_nuevos, $temp );
+        }
+      }
+      if(count($editados) > 0){
+        foreach ($editados as &$editado) {
+          $employee = \Model::factory('\Models\Competition\Employee', 'competition')->find_one($editado->{'id'});
+          $employee->name = $editado->{'name'};
+          $employee->dni = $editado->{'dni'};
+          $employee->address = $editado->{'address'};
+          $employee->phone = $editado->{'phone'};
+          $employee->email = $editado->{'email'};
+          $employee->branch_id = $editado->{'branch_id'};
+          $employee->save();
+        }
+      }
+      if(count($eliminados) > 0){
+        foreach ($eliminados as &$eliminado) {
+          $employee = \Model::factory('\Models\Competition\Employee', 'competition')->find_one($eliminado);
+          $employee->delete();
+        }
+      }
+      $rpta['tipo_mensaje'] = 'success';
+      $rpta['mensaje'] = [
+        'Se ha registrado los cambios en los empleados',
+        $array_nuevos
+      ];
+      \ORM::get_db('competition')->commit();
+    }catch (\Exception $e) {
+      $status = 500;
+      $rpta['tipo_mensaje'] = 'error';
+      $rpta['mensaje'] = [
+        'Se ha producido un error en guardar la tabla de las empleados',
+        $e->getMessage()
+      ];
+      \ORM::get_db('competition')->rollBack();
+    }
+    return $response->withStatus($status)->write(json_encode($rpta));
   }
 }

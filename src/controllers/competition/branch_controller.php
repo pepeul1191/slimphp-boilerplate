@@ -51,7 +51,6 @@ class BranchController extends \Configs\Controller
       if(count($editados) > 0){
         foreach ($editados as &$editado) {
           $branch = \Model::factory('\Models\Competition\Branch', 'competition')->find_one($editado->{'id'});
-          var_dump($editado->{'branch_type_id'});
           $branch->name = $editado->{'name'};
           $branch->branch_type_id = $editado->{'branch_type_id'};
           $branch->save();

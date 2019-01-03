@@ -20,6 +20,7 @@ var adminRouter = Backbone.Router.extend({
       this.branchView = new BranchView();
     }
     this.branchView.render();
+    branchTypeCollection.fillModels();
     this.branchView.table.listar();
   },
   employee: function(){
@@ -27,6 +28,8 @@ var adminRouter = Backbone.Router.extend({
       this.employeeView = new EmployeeView();
     }
     this.employeeView.render();
+    branchCollection.fillModelsTable();
+    this.employeeView.table.listar();
   },
   participant: function(){
     if(this.participantView == null){

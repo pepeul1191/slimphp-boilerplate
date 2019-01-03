@@ -1,5 +1,4 @@
 var branchTypeCollection = new BranchTypeCollection();
-branchTypeCollection.fillModels();
 
 var tableBranchData = {
   el: "#formTableBranch",

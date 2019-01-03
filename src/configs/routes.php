@@ -54,3 +54,5 @@ $app->post('/competition/branch/save', \Competition\Controller\BranchController:
 $app->post('/competition/employee/photo_upload', \Competition\Controller\EmployeeController::class . ':photoUpload');
 $app->get('/competition/employee/dni', \Competition\Controller\EmployeeController::class . ':dni');
 $app->post('/competition/employee/participate', \Competition\Controller\EmployeeController::class . ':participate');
+$app->get('/competition/employee/list', \Competition\Controller\EmployeeController::class . ':listWithBranch');
+$app->post('/competition/employee/save', \Competition\Controller\EmployeeController::class . ':save');

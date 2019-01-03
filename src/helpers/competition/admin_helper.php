@@ -40,12 +40,17 @@ if ( ! function_exists('index_js'))
           'bower_components/swp-backbone/views/table',
           'bower_components/swp-backbone/views/modal',
           'competition/models/branch',
+          'competition/models/employee',
           'competition/models/branch_type',
+          'competition/collections/employee_collection',
           'competition/collections/branch_collection',
           'competition/collections/branch_type_collection',
           'competition/data/table_branch_data',
+          'competition/data/table_employee_data',
           'competition/templates/branch_template',
+          'competition/templates/employee_template',
           'competition/views/branch_view',
+          'competition/views/employee_view',
           'competition/routes/admin_route',
         ];
         break;
