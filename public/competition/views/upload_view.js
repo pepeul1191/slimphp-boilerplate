@@ -15,9 +15,9 @@ var UploadView = Backbone.View.extend({
   //eventos table de permisos
   render: function(event){
     $(this.el).html(uploadTemplate({}));
-    if(router.signInView == null){
+    if(router.signInView == null || router.signInView.model.get("id") == "E"){
       $(this.messageLabel).html("Debe de llenar el formulario anterior");
-      $(this.messageLabel).removeClass("text-sucess");
+      $(this.messageLabel).removeClass("text-success");
       $(this.messageLabel).addClass("text-danger");
     }else{
       $("#txtTitle").prop("disabled", false);
@@ -50,20 +50,26 @@ var UploadView = Backbone.View.extend({
 	      processData: false,
 	      beforeSend: function() {
 					$("#message").html("Subiendo");
+          $("#message").removeClass("text-success");
+          $("#message").removeClass("text-danger");
           $("#message").addClass("text-warning");
 				},
 	      success: function(data) {
           _this.model.set("file_name", data);
           $("#submitSignIn").prop("disabled", false);
-          $("#message").html("");
+          $("#message").html("Se subió el archivo al servidor");
+          $("#message").removeClass("text-danger");
+          $("#message").removeClass("text-warning");
+          $("#message").addClass("text-success");
 	      },
         error: function(xhr, status, error){
           console.error(error);
   				var m = JSON.parse(xhr.responseText);
   				console.log(m);
-          $(_this.messageLabel).html("Ocurrió un error subiendo el archivo");
-          $(_this.messageLabel).removeClass("text-sucess");
-          $(_this.messageLabel).addClass("text-danger");
+          $("#message").html("Ocurrió un error subiendo el archivo");
+          $("#message").removeClass("text-success");
+          $("#message").removeClass("text-warning");
+          $("#message").addClass("text-danger");
           $("#submitSignIn").prop("disabled", true);
         }
 	    });
@@ -106,11 +112,24 @@ var UploadView = Backbone.View.extend({
 	      async: false,
 	      success: function(data) {
           console.log(data);
+          $("#message").html("Se ha registrado su participation en el concurso");
+          $("#message").removeClass("text-danger");
+          $("#message").removeClass("text-warning");
+          $("#message").addClass("text-success");
+          router.signInView.model.clear().set(router.signInView.model.defaults);
+          _this.model.clear().set(_this.model.defaults);
+          window.setTimeout(function(){
+            window.location.href = BASE_URL + "competition/#/";
+          }, 3000);
 	      },
         error: function(xhr, status, error){
           console.error(error);
   				var m = JSON.parse(xhr.responseText);
   				console.log(m);
+          $("#message").html("Ocurrió un error registrar su participación en el concurso");
+          $("#message").removeClass("text-success");
+          $("#message").removeClass("text-warning");
+          $("#message").addClass("text-danger");
         }
 	    });
     }else{

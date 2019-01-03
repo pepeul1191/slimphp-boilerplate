@@ -25,11 +25,11 @@ var signInTemplate = _.template(`
           <select class="custom-select" id="slcBranch" disabled>
             <option value="E" selected>Seleccione una sede...</option>
             <% branches.each(function(model){ %>
-              <% //if (model.get('id') == branch_id) { %>
+              <% if (model.get('id') == branch_id) { %>
               <option value="<%= model.get('id') %>"><%= model.get('name') %></option>
-              <% //} else { %>
+              <% } else { %>
                 <option value="<%= model.get('id') %>"><%= model.get('name') %></option>
-              <% //} %>
+              <% } %>
             <% }) %>
           </select>
           <small id="txtBranchHelp" class="form-text text-danger"></small>
