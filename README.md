@@ -20,6 +20,11 @@ Migraciones con DBMATE - competition:
     $ dbmate -d "db/competition/migrations" -e "COMPETITION" up
     $ dbmate -d "db/competition/migrations" -e "COMPETITION" rollback
 
+### Dump y Restore Mysql
+
+    $ mysqldump -u root -p competition > db/competition.sql
+    $ mysql -u root -p competition < db/competition.sql
+
 ---
 
 Fuentes:
