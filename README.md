@@ -25,6 +25,10 @@ Migraciones con DBMATE - competition:
     $ mysqldump -u root -p competition > db/competition.sql
     $ mysql -u root -p competition < db/competition.sql
 
+### ZIP
+
+    $ sudo apt-get install php7.0-zip
+
 ---
 
 Fuentes:
@@ -38,3 +42,4 @@ Fuentes:
 + https://github.com/slimphp/Slim-Skeleton
 + https://www.slimframework.com/docs/v3/cookbook/uploading-files.html
 + https://symfony.com/doc/current/components/filesystem.html
++ https://github.com/Chumper/Zipper

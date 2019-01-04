@@ -33,12 +33,12 @@ class PhotoController extends \Configs\Controller
     $status = 200;
     $this->load_helper('competition/employee');
     try {
-      $folder = '/tmp/'. randito(10);
+      $randito = randito(10);
+      $folder = '/tmp/'. $randito;
       $fileSystem = new Filesystem();
       $fileSystem->mkdir($folder, 0700);
       $rs = \Model::factory('\Models\Competition\VWPhotoEmployee', 'competition')
         ->find_array();
-      echo $folder;
       foreach ($rs as &$photo) {
         if($fileSystem->exists(PATH . '/public/competition/uploads/' . $photo['file_name'])){
           $file_name = $photo['name'] . ', ' . $photo['dni'];
@@ -49,6 +49,12 @@ class PhotoController extends \Configs\Controller
           );
         }
       }
+      $zipper = new \Chumper\Zipper\Zipper;
+      $files = glob($folder . '/*');
+      $zipper->make(PATH . '/public/competition/uploads/' . $randito . '.zip');
+      $zipper->add($files);
+      $zipper->close();
+      $rpta = '/public/competition/uploads/' . $randito . '.zip';
     }catch (\IOExceptionInterface $exception) {
       $status = 500;
       $rpta = json_encode(
