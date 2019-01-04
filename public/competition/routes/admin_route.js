@@ -13,7 +13,7 @@ var adminRouter = Backbone.Router.extend({
     "*actions" : "default",
   },
   default: function() {
-    window.location.href = BASE_URL + "competition/admin/#/";
+    // window.location.href = BASE_URL + "competition/admin/#/";
   },
   branch: function(){
     if(this.branchView == null){

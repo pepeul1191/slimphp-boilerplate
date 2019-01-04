@@ -17,6 +17,8 @@ session_start();
 $settings = require __DIR__ . '/src/configs/settings.php';
 $app = new \Slim\App($settings);
 
+define("PATH", __DIR__);
+
 // Register database
 require __DIR__ . '/src/configs/database.php';
 // Set up dependencies

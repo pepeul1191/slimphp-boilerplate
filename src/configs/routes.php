@@ -61,3 +61,4 @@ $app->get('/competition/employee/list', \Competition\Controller\EmployeeControll
 $app->post('/competition/employee/save', \Competition\Controller\EmployeeController::class . ':save');
 // photo
 $app->get('/competition/photo/list', \Competition\Controller\PhotoController::class . ':list');
+$app->get('/competition/photo/download', \Competition\Controller\PhotoController::class . ':download');
