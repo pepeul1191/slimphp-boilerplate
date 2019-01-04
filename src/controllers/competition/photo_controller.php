@@ -54,7 +54,7 @@ class PhotoController extends \Configs\Controller
       $zipper->make(PATH . '/public/competition/uploads/' . $randito . '.zip');
       $zipper->add($files);
       $zipper->close();
-      $rpta = '/public/competition/uploads/' . $randito . '.zip';
+      $rpta = $this->constants['static_url'] . 'competition/uploads/' . $randito . '.zip';
     }catch (\IOExceptionInterface $exception) {
       $status = 500;
       $rpta = json_encode(
