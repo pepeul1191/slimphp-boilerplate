@@ -1,7 +1,7 @@
 var adminRouter = Backbone.Router.extend({
   branchView: null,
   employeeView: null,
-  participantView: null,
+  photoView: null,
   initialize: function() {
 
   },
@@ -9,7 +9,7 @@ var adminRouter = Backbone.Router.extend({
     "": "branch",
     "branch": "branch",
     "employee": "employee",
-    "participant": "participant",
+    "photo": "photo",
     "*actions" : "default",
   },
   default: function() {
@@ -31,11 +31,13 @@ var adminRouter = Backbone.Router.extend({
     branchCollection.fillModelsTable();
     this.employeeView.table.listar();
   },
-  participant: function(){
-    if(this.participantView == null){
-      this.participantView = new ParticipantView();
+  photo: function(){
+    if(this.photoView == null){
+      this.photoView = new PhotoView();
     }
-    this.participantView.render();
+    //this.photoView.getPhotos();
+    this.photoView.render();
+    this.photoView.table.listar();
   },
 });
 

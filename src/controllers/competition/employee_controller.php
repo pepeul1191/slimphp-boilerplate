@@ -117,12 +117,14 @@ class EmployeeController extends \Configs\Controller
         $new_photo->description = $participation->{'upload'}->{'description'};
         $new_photo->employee_id = $participation->{'employee'}->{'id'};
         $new_photo->file_name = $participation->{'upload'}->{'file_name'};
+        $new_photo->created = date('Y/m/d H:i:s');
         $new_photo->save();
       }else{
         # update photo
         $photo->title = $participation->{'upload'}->{'title'};
         $photo->description = $participation->{'upload'}->{'description'};
         $photo->file_name = $participation->{'upload'}->{'file_name'};
+        $photo->created = date('Y/m/d H:i:s');
         $photo->save();
       }
       $rpta = json_encode(

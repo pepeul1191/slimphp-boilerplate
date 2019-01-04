@@ -47,12 +47,17 @@ $app->post('/access/permission/save', \Access\Controller\PermissionController::c
 $app->get('/competition/', \Competition\Controller\HomeController::class . ':index');
 $app->get('/competition/login', \Competition\Controller\LoginController::class . ':index');
 $app->post('/competition/login', \Competition\Controller\LoginController::class . ':access');
+// admin
 $app->get('/competition/admin/', \Competition\Controller\AdminController::class . ':index')->add($mw_session_true);
+// branch
 $app->get('/competition/branch/list', \Competition\Controller\BranchController::class . ':listVW');
 $app->get('/competition/branch_type/list', \Competition\Controller\BranchTypeController::class . ':list');
 $app->post('/competition/branch/save', \Competition\Controller\BranchController::class . ':save');
+// employee
 $app->post('/competition/employee/photo_upload', \Competition\Controller\EmployeeController::class . ':photoUpload');
 $app->get('/competition/employee/dni', \Competition\Controller\EmployeeController::class . ':dni');
 $app->post('/competition/employee/participate', \Competition\Controller\EmployeeController::class . ':participate');
 $app->get('/competition/employee/list', \Competition\Controller\EmployeeController::class . ':listWithBranch');
 $app->post('/competition/employee/save', \Competition\Controller\EmployeeController::class . ':save');
+// photo
+$app->get('/competition/photo/list', \Competition\Controller\PhotoController::class . ':list');

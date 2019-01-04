@@ -11,6 +11,8 @@
     var STATICS_URL  = '<?php echo $constants['static_url'];?>';
     var CSRF = "<?php echo $constants['csrf']['secret']; ?>";
     var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
+    var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
+    <?php if($upload) {?> var UPLOAD = '<?php echo $upload; ?>'; <?php } ?>
   </script>
 </head>
 <body>

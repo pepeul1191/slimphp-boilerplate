@@ -47,10 +47,10 @@ sp:
               url: competition/admin/#/branch
             - name: Gestión de Empleados
               url: competition/admin/#/employee
-        - name: Participantes
+        - name: Fotos del Concurso
           items:
             - name: Lista de Participantes
-              url: competition/admin/#/participant
+              url: competition/admin/#/photo
             - name: Descargar Participantes
               url: competition/admin/#/download
   providers:

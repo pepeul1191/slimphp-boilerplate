@@ -24,6 +24,7 @@ class AdminController extends \Configs\Controller
       'modules' => $modules,
       'items' => $items,
       'mensaje' => '',
+      'upload' => $this->constants['static_url'] . 'competition/uploads/',
       'data' => json_encode(array(
         'mensaje' => false,
         'titulo_pagina' => 'Gestión de Ubicaciones',
