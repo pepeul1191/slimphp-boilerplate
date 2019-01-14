@@ -25,7 +25,8 @@ var SignInView = Backbone.View.extend({
       $("#txtAddress").prop("disabled", false);
       $("#txtPhone").prop("disabled", false);
       $("#txtEmail").prop("disabled", false);
-      $("#slcBranch").focus();
+      $("#txtName").prop("disabled", false);
+      $("#txtName").focus();
     }
   },
   searchEmployee: function(event){
@@ -48,21 +49,26 @@ var SignInView = Backbone.View.extend({
         $("#txtAddress").prop("disabled", false);
         $("#txtPhone").prop("disabled", false);
         $("#txtEmail").prop("disabled", false);
-        $("#slcBranch").focus();
+        $("#txtName").prop("disabled", false);
+        $("#txtName").focus();
         data = JSON.parse(data);
-        _this.model.set("id", data.id);
-        _this.model.set("name", data.name);
-        _this.model.set("dni", data.dni);
-        _this.model.set("address", data.address);
-        _this.model.set("phone", data.phone);
-        _this.model.set("email", data.email);
-        _this.model.set("branch_id", data.branch_id);
-        $("#slcBranch").val(data.branch_id);
-        $("#txtDni").val(data.dni);
-        $("#txtName").val(data.name);
-        $("#txtAddress").val(data.address);
-        $("#txtPhone").val(data.phone);
-        $("#txtEmail").val(data.email);
+        if (data != []){
+          _this.model.set("id", data.id);
+          _this.model.set("name", data.name);
+          _this.model.set("dni", data.dni);
+          _this.model.set("address", data.address);
+          _this.model.set("phone", data.phone);
+          _this.model.set("email", data.email);
+          _this.model.set("branch_id", data.branch_id);
+          $("#slcBranch").val(data.branch_id);
+          $("#txtDni").val(data.dni);
+          $("#txtName").val(data.name);
+          $("#txtAddress").val(data.address);
+          $("#txtPhone").val(data.phone);
+          $("#txtEmail").val(data.email);
+        }else{
+          _this.model.set("id", "E");
+        }
       },
       error: function(xhr, status, error){
         console.error(error);
@@ -77,6 +83,7 @@ var SignInView = Backbone.View.extend({
         $("#txtDni").focus();
       }
     });
+    $("#txtDni").val(dni);
   },
   goUpload: function(event){
     var _continue = true;

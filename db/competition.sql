@@ -84,7 +84,7 @@ CREATE TABLE `employees` (
   PRIMARY KEY (`id`),
   KEY `fk_employee_branch` (`branch_id`),
   CONSTRAINT `fk_employee_branch` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'José Valdivia Caballero','70241720','Calle Mariano Pacheco 1073','987731975','jvaldivia@coa.com.pe',28);
+INSERT INTO `employees` VALUES (1,'JosÃ© Valdivia','70241720','Mariano 1073','71897123','pe@com.pe',1),(2,'d','1123','ca','12312312','p@c.p',5);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,10 +110,11 @@ CREATE TABLE `photos` (
   `description` text NOT NULL,
   `file_name` varchar(50) NOT NULL,
   `employee_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_photo_employee` (`employee_id`),
   CONSTRAINT `fk_photo_employee` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +123,7 @@ CREATE TABLE `photos` (
 
 LOCK TABLES `photos` WRITE;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `photos` VALUES (1,'1','s','fk2uFXgaRfiFifVJ3CPm61VofzzGPj.png',1);
+INSERT INTO `photos` VALUES (1,'a','b','CFJoLrdPp6j96uWXY1oFeHitu8ndAq.png',1,'2019-01-03 22:24:03'),(2,'jeje','jojo','CxJEzLj56UHLdtg2iWzM8XmE7LD8fP.png',2,'2019-01-03 21:54:36');
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +146,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20190101045258'),('20190101045426'),('20190101045530'),('20190101050133'),('20190101051621'),('20190101052212'),('20190102144909');
+INSERT INTO `schema_migrations` VALUES ('20190101045258'),('20190101045426'),('20190101045530'),('20190101050133'),('20190101051621'),('20190101052212'),('20190102144909'),('20190103215726'),('20190103224322');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,6 +166,53 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `vw_employees_branches`
+--
+
+DROP TABLE IF EXISTS `vw_employees_branches`;
+/*!50001 DROP VIEW IF EXISTS `vw_employees_branches`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_employees_branches` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`,
+ 1 AS `dni`,
+ 1 AS `address`,
+ 1 AS `phone`,
+ 1 AS `email`,
+ 1 AS `branch_id`,
+ 1 AS `branch_name`,
+ 1 AS `branch_type_id`,
+ 1 AS `branch_type_name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `vw_photos_employees`
+--
+
+DROP TABLE IF EXISTS `vw_photos_employees`;
+/*!50001 DROP VIEW IF EXISTS `vw_photos_employees`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_photos_employees` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`,
+ 1 AS `dni`,
+ 1 AS `address`,
+ 1 AS `phone`,
+ 1 AS `email`,
+ 1 AS `branch_id`,
+ 1 AS `branch_name`,
+ 1 AS `branch_type_id`,
+ 1 AS `branch_type_name`,
+ 1 AS `photo_id`,
+ 1 AS `title`,
+ 1 AS `description`,
+ 1 AS `file_name`,
+ 1 AS `created`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Final view structure for view `vw_branches_types`
 --
 
@@ -181,6 +229,42 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_employees_branches`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_employees_branches`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_employees_branches` AS select `E`.`id` AS `id`,`E`.`name` AS `name`,`E`.`dni` AS `dni`,`E`.`address` AS `address`,`E`.`phone` AS `phone`,`E`.`email` AS `email`,`E`.`branch_id` AS `branch_id`,`B`.`name` AS `branch_name`,`B`.`branch_type_id` AS `branch_type_id`,`BT`.`name` AS `branch_type_name` from ((`employees` `E` join `branches` `B` on((`B`.`id` = `E`.`branch_id`))) join `branch_types` `BT` on((`B`.`branch_type_id` = `BT`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_photos_employees`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_photos_employees`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_photos_employees` AS select `E`.`id` AS `id`,`E`.`name` AS `name`,`E`.`dni` AS `dni`,`E`.`address` AS `address`,`E`.`phone` AS `phone`,`E`.`email` AS `email`,`E`.`branch_id` AS `branch_id`,`B`.`name` AS `branch_name`,`B`.`branch_type_id` AS `branch_type_id`,`BT`.`name` AS `branch_type_name`,`P`.`id` AS `photo_id`,`P`.`title` AS `title`,`P`.`description` AS `description`,`P`.`file_name` AS `file_name`,`P`.`created` AS `created` from (((`employees` `E` join `branches` `B` on((`B`.`id` = `E`.`branch_id`))) join `branch_types` `BT` on((`B`.`branch_type_id` = `BT`.`id`))) join `photos` `P` on((`P`.`employee_id` = `E`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -191,4 +275,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-02 21:49:20
+-- Dump completed on 2019-01-03 22:56:35

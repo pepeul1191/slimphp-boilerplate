@@ -9,7 +9,7 @@ if ( ! function_exists('index_css'))
         $rpta = [
           'bower_components/bootstrap/dist/css/bootstrap.min',
           'bower_components/font-awesome/css/font-awesome.min',
-          'assets/css/constants',
+          'competition/assets/css/constants',
           'assets/css/error',
         ];
         break;
